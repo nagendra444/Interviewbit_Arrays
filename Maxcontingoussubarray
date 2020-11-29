@@ -1,0 +1,15 @@
+//kadanes Algorithm
+
+int Solution::maxSubArray(const vector<int> &A) {
+    
+    int n=A.size();
+    int maxend[n];
+    maxend[0]=A[0];
+    for(int i=1;i<A.size();i++)
+    {
+        maxend[i] = max(maxend[i-1]+A[i],A[i]); //adding next element and comparing with the previous subarray sum;
+    }
+    int res = *max_element(maxend,maxend+n);
+    return res;
+    
+}
